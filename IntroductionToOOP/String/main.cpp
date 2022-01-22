@@ -23,32 +23,25 @@ public:
 	{
 		return str;
 	}
-	 char* get_str()
+	char* get_str()
 	{
 		return str;
 	}
 
-	 explicit String(int size = 80) :size(size), str(new char[size] {})
+	explicit String(int size = 80) :size(size), str(new char[size] {})
 	{
 		//Благодаря принимаемому параметру size мы можем создавать строки заданного размера
-		//this->size = size;
-		//this->str = new char[size] {};
 		cout << "DefaultConst:\t" << this << endl;
 	}
-	String(const char* str):size(strlen(str) + 1), str(new char[size] {})
+
+	String(const char* str) :String(strlen(str) + 1)
 	{
-		//cout << sizeof(str) << endl;
-		//this->size = StringLength(str) + 1;	//Сохраняем размер строки в Байтах, с учетом Терминирующего нуля.
-		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++)this->str[i] = str[i];
 		cout << "Constructor:\t" << this << endl;
 	}
-	String(const String& other):size(other.size), str(new char[size] {})
+	String(const String& other) :String(other.str)
 	{
 		//Глубокое копирование (Deep copy)
-		//this->size = other.size;
-		//this->str = new char[size] {};
-		for (int i = 0; i < size; i++)this->str[i] = other.str[i];
 		cout << "CopyConstructor:" << this << endl;
 	}
 	~String()
@@ -105,10 +98,10 @@ String operator+(const String& left, const String& right)
 	for (int i = 0; i < left.get_size(); i++)
 		//l-value = r-value;
 		result[i] = left[i];
-		//result.get_str()[i] = left.get_str()[i];
+	//result.get_str()[i] = left.get_str()[i];
 	for (int i = 0; i < left.get_size(); i++)
 		result[left.get_size() - 1 + i] = right[i];
-		//result.get_str()[left.get_size() - 1 + i] = left.get_str()[i];
+	//result.get_str()[left.get_size() - 1 + i] = left.get_str()[i];
 	return result;
 }
 
