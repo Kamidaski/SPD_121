@@ -91,7 +91,7 @@ public:
 		cout << "Str:\t" << str << endl;
 	}
 };
-
+//---------------------------------------------------------------------------------------------------------------------------------------//
 String operator+(const String& left, const String& right)
 {
 	String result(left.get_size() + right.get_size() - 1);
@@ -109,7 +109,7 @@ ostream& operator<<(ostream& os, const String& obj)
 {
 	return os << obj.get_str();
 }
-
+//-------------------------------------------------------------------------------------------------------------------------------------//
 
 //#define NULL_TERMINATED_LINES
 //#define BASE_CHECK
